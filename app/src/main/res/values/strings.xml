@@ -1,0 +1,123 @@
+<resources>
+    <string name="app_name">Egg Service</string>
+
+    <string name="offline_mode">Offline mode</string>
+    <string name="offline_mode_info">You can connect to Firebase anytime later by invoking the settings menu.</string>
+    <string name="not_connected">No internet connection</string>
+
+    <string name="action_settings">Settings</string>"
+    <string name="action_info">About</string>
+
+    <string name="title_settings">Settings</string>
+    <string name="pref_header_general">General</string>
+
+    <string name="gusto_soft">A soft-boiled egg</string>
+    <string name="gusto_medium">A medium-boiled egg</string>
+    <string name="gusto_hard">A hard-boiled egg</string>
+    <string name="gusto_fried_egg">A fried egg</string>
+    <string name="gusto_scrambled_egg">A scrambled egg</string>
+    <string name="gusto_no_egg">No egg today</string>
+    <string name="title_gusto">Would like:  </string>
+
+    <string name="hint_name">John Doe</string>
+    <string name="title_create_member">Group member</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+    <string name="name_already_exists">The name does already exist.</string>
+
+    <string name="dropbox_error">Something went wrong.</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="invite">Invite</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="eggs_done"># eggs are ready!</string>
+    <string name="egg_done"># egg is ready!</string>
+
+    <string name="title_orders">Orders</string>
+    <string name="label_soft_eggs">Soft-boiled eggs: </string>
+    <string name="label_medium_eggs">Medium-boiled eggs: </string>
+    <string name="label_hard_eggs">Hard-boiled eggs: </string>
+
+    <string name="pref_header_account">Firebase account</string>
+    <string name="pref_header_timing">Cooking times (min)</string>
+    <string name="pref_title_firebase_connection">Firebase connection</string>
+    <string name="pref_title_timing_soft">Soft-boiled eggs</string>
+    <string name="pref_title_timing_medium">Medium-boiled eggs</string>
+    <string name="pref_title_timing_hard">Hard-boiled eggs</string>
+    <string name="pref_value_connected">connected</string>
+    <string name="pref_value_not_connected">not connected</string>
+
+    <string name="pref_connect_to_firebase">You can connect the app with a Firebase account.</string>
+    <string name="pref_connect_to_firebase2">In this way it is possible to access the app data from different devices.</string>
+    <string name="pref_connect_to_firebase3">Invite other users so that they can enter their favorite egg consistency on their devices.</string>
+
+    <string name="pref_connect_to_group">All group members have access to the list of "egg orders".</string>
+    <string name="pref_title_group_setup">Group membership</string>
+
+    <string name="title_activity_main">Egg Service</string>
+    <string name="title_home">Members</string>
+    <string name="title_cook_eggs">Cook eggs</string>
+
+    <string name="desc_firebase_lockup">Firebase Logo</string>
+    <string name="google_title_text">Google sign in</string>
+    <string name="signed_in">Signed in</string>
+    <string name="signed_out">Signed out</string>
+    <string name="sign_in">Sign in</string>
+    <string name="create_account">Register</string>
+    <string name="verify_email">Verify email address</string>
+    <string name="sign_out">Sign out</string>
+    <string name="auth_failed">Signing in failed</string>
+    <string name="google_status_fmt">Google account: %s</string>
+    <string name="firebase_status_fmt">Firebase account: %s</string>
+    <string name="login_with_email">Sign in with email address</string>
+    <string name="login_with_google">Sign in with Google</string>
+    <string name="hint_password">Password</string>
+    <string name="emailpassword_status_fmt">Account: %1$s (verified: %2$s)</string>
+
+    <string name="state_live">You are the group owner.</string>
+    <string name="state_joined">You have joined a group.</string>
+    <string name="state_not_connected">You have not yet joined a group.</string>
+    <string name="state_request_pending">You have requested to join a group.</string>
+    <string name="current_group">"Group name: %s"</string>
+
+    <string name="create_group">Create group</string>
+    <string name="join_group">Join a group</string>
+    <string name="leave_group">Leave group</string>
+    <string name="delete_group">Delete group</string>
+    <string name="unknown_group">Unknown group</string>
+    <string name="request_still_peding">The join request has not yet been accepted.</string>
+    <string name="request_sent">The request has been sent.</string>
+    <string name="not_authorized">You are not authorized to join this group.</string>
+    <string name="error_occurred">An error has occurred.</string>
+    <string name="group_owner">User name of the group owner:</string>
+    <string name="title_join_group">Join a group</string>
+    <string name="title_join_group_request">Request</string>
+    <string name="join_group_request">Do you want to allow the following user to edit the egg orders?</string>
+    <string name="request_accepted">You have been accepted for the group.</string>
+    <string name="request_rejected">The joijn request has been rejected.</string>
+    <string name="title_delete_group">Delete group</string>
+    <string name="delete_group_question">Do you want to delete the group with all entered data?</string>
+
+    <string name="choose_theme">Change theme</string>
+    <string name="pref_header_themes">Alarm sounds</string>
+    <string name="pref_title_sound_theme">Sound theme</string>
+    <string name="theme_changed">The sound theme has been changed.</string>
+
+    <string name="sound_theme_standard">Egg timer</string>
+    <string name="sound_theme_mozart">Classical</string>
+    <string name="sound_theme_beethoven">Beethoven</string>
+    <string name="sound_theme_opera">Opera</string>
+    <string name="sound_theme_random">Random alarm theme</string>
+
+    <string name="hint_theme_name">Sound theme</string>
+    <string name="title_create_theme">New sound theme</string>
+    <string name="menu_item_edit">Edit</string>
+    <string name="menu_item_delete">Delete</string>
+    <string name="change_sound">Change alarm sound</string>
+    <string name="error_playing">The alarm sound cannot be played.</string>
+</resources>

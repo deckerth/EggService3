@@ -1,0 +1,123 @@
+<resources>
+    <string name="app_name">Eierservice</string>
+
+    <string name="offline_mode">Offline Modus</string>
+    <string name="offline_mode_info">Sie können sich später in den Einstellungen mit Firebase verbinden.</string>
+    <string name="not_connected">Keine Internetverbindung</string>
+
+    <string name="action_settings">Einstellungen</string>"
+    <string name="action_info">Info</string>
+
+    <string name="title_settings">Einstellungen</string>
+    <string name="pref_header_general">General</string>
+
+    <string name="gusto_soft">weich</string>
+    <string name="gusto_medium">mittel</string>
+    <string name="gusto_hard">hart</string>
+    <string name="gusto_fried_egg">Spiegelei</string>
+    <string name="gusto_scrambled_egg">Rührei</string>
+    <string name="gusto_no_egg">heute nicht</string>
+    <string name="title_gusto">Eierwunsch:  </string>
+
+    <string name="hint_name">Max Mustermann</string>
+    <string name="title_create_member">Gruppenmitglied</string>
+    <string name="ok">OK</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="name_already_exists">Der Name existiert bereits.</string>
+
+    <string name="dropbox_error">Da hat etwas nicht geklappt.</string>
+    <string name="loading">Ladevorgang&#8230;</string>
+    <string name="connect">Verbinden</string>
+    <string name="disconnect">Trennen</string>
+    <string name="invite">Einladen</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="eggs_done"># Eier herausnehmen!</string>
+    <string name="egg_done"># Ei herausnehmen!</string>
+
+    <string name="title_orders">Wünsche</string>
+    <string name="label_soft_eggs">Weiche Eier: </string>
+    <string name="label_medium_eggs">Mittlere Eier: </string>
+    <string name="label_hard_eggs">Harte Eier: </string>
+
+    <string name="pref_header_account">Firebase Konto</string>
+    <string name="pref_header_timing">Garzeiten (min)</string>
+    <string name="pref_title_firebase_connection">Firebase Verbindung</string>
+    <string name="pref_title_timing_soft">Weiche Eier</string>
+    <string name="pref_title_timing_medium">Mittlere Eier</string>
+    <string name="pref_title_timing_hard">Harte Eier</string>
+    <string name="pref_value_connected">verbunden</string>
+    <string name="pref_value_not_connected">nicht verbunden</string>
+
+    <string name="pref_connect_to_firebase">Sie können die App mit einem Firebase Konto verbinden.</string>
+    <string name="pref_connect_to_firebase2">Auf diese Weise können Sie von mehreren Geräten aus auf die Daten zugreifen.</string>
+    <string name="pref_connect_to_firebase3">Laden Sie weitere Nutzer ein, so dass jeder seinen Wunsch auf seinem Gerät eingeben kann.</string>
+
+    <string name="pref_connect_to_group">Alle Mitglieder einer Gruppe können gemeinsam auf die Eierwunschliste zugreifen.</string>
+    <string name="pref_title_group_setup">Gruppenzugehörigkeit</string>
+
+    <string name="title_activity_main">Eier Service</string>
+    <string name="title_home">Mitglieder</string>
+    <string name="title_cook_eggs">Eier kochen</string>
+
+    <string name="desc_firebase_lockup">Firebase Logo</string>
+    <string name="google_title_text">Google Anmeldung</string>
+    <string name="signed_in">Angemeldet</string>
+    <string name="signed_out">Abgemeldet</string>
+    <string name="sign_in">Anmelden</string>
+    <string name="create_account">Registrieren</string>
+    <string name="verify_email">Email verifizieren</string>
+    <string name="sign_out">Abmelden</string>
+    <string name="auth_failed">Die Anmeldung ist fehlgeschlagen</string>
+    <string name="google_status_fmt">Google Benutzer: %s</string>
+    <string name="firebase_status_fmt">Firebase Benutzer: %s</string>
+    <string name="login_with_email">Mit Email-Adresse anmelden</string>
+    <string name="login_with_google">Mit Google anmelden</string>
+    <string name="hint_password">Passwort</string>
+    <string name="emailpassword_status_fmt">Benutzer: %1$s (überprüft: %2$s)</string>
+
+    <string name="state_live">Sie sind Gruppeneigentümer.</string>
+    <string name="state_joined">Sie sind einer Gruppe beigetreten.</string>
+    <string name="state_not_connected">Sie noch kein Mitglied einer Gruppe.</string>
+    <string name="state_request_pending">Sie haben angefragt einer Gruppe beizutreten.</string>
+    <string name="current_group">"Gruppenname: %s"</string>
+
+    <string name="create_group">Gruppe anlegen</string>
+    <string name="join_group">Einer Gruppe beitreten</string>
+    <string name="leave_group">Gruppe verlassen</string>
+    <string name="delete_group">Gruppe löschen</string>
+    <string name="unknown_group">Unbekannte Gruppe</string>
+    <string name="request_still_peding">Der Beitritt ist noch nicht bestätigt worden.</string>
+    <string name="request_sent">Die Anfrage wurde versendet.</string>
+    <string name="not_authorized">Sie haben keine Berechtigung für diese Gruppe.</string>
+    <string name="error_occurred">Es ist ein Fehler aufgetreten.</string>
+    <string name="group_owner">Benutzername des Gruppeneigentümers:</string>
+    <string name="title_join_group">Beitreten einer Gruppe</string>
+    <string name="title_join_group_request">Anfrage</string>
+    <string name="join_group_request">Möchten Sie dem folgenden Benutzer erlauben die Wunschliste zu ändern?</string>
+    <string name="request_accepted">Sie wurden in die Gruppe aufgenommen.</string>
+    <string name="request_rejected">Der Gruppenzutritt wurde verweigert.</string>
+    <string name="title_delete_group">Gruppe löschen</string>
+    <string name="delete_group_question">Soll die Gruppe mit allen Daten gelöscht werden?</string>
+
+    <string name="choose_theme">Schema ändern</string>
+    <string name="pref_header_themes">Alarmtöne</string>
+    <string name="pref_title_sound_theme">Klangschema</string>
+    <string name="theme_changed">Das Klangschema wurde geändert.</string>
+
+    <string name="sound_theme_standard">Eieruhr</string>
+    <string name="sound_theme_mozart">Klassik</string>
+    <string name="sound_theme_beethoven">Beethoven</string>
+    <string name="sound_theme_opera">Oper</string>
+    <string name="sound_theme_random">Zufallswiedergabe</string>
+
+    <string name="hint_theme_name">Klangschema</string>
+    <string name="title_create_theme">Neues Klangschema</string>
+    <string name="menu_item_edit">Bearbeiten</string>
+    <string name="menu_item_delete">Löschen</string>
+    <string name="change_sound">Alarmton ändern</string>
+    <string name="error_playing">Der Alarmton kann nicht wiedergegeben werden.</string>
+</resources>

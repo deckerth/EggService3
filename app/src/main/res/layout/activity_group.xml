@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.GroupActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/vertical_guideline"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/info_icon"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_group_work" />
+
+    <TextView
+        android:id="@+id/info_text"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="40dp"
+        android:text="@string/pref_connect_to_group"
+        app:layout_constraintLeft_toRightOf="@id/info_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="40dp"
+        android:text=""
+        app:layout_constraintLeft_toRightOf="@id/info_icon"
+        app:layout_constraintTop_toBottomOf="@id/info_text" />
+
+    <TextView
+        android:id="@+id/group_name"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="40dp"
+        android:paddingBottom="20dp"
+        android:text=""
+        app:layout_constraintLeft_toRightOf="@id/info_icon"
+        app:layout_constraintTop_toBottomOf="@id/status_text" />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/Divider.Horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group_name" />
+
+    <Button
+        android:id="@+id/create_group"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/ic_group"
+        android:paddingLeft="10dp"
+        android:visibility="gone"
+        android:text="@string/create_group"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintTop_toBottomOf="@id/divider" />
+
+    <Button
+        android:id="@+id/join_group"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/rounded_button"
+        android:drawableLeft="@drawable/ic_group_add"
+        android:text="@string/join_group"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintTop_toBottomOf="@id/create_group" />
+
+    <Button
+        android:id="@+id/leave_group"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/rounded_button_secondary"
+        android:drawableLeft="@drawable/ic_cancel"
+        android:text="@string/leave_group"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintTop_toBottomOf="@id/join_group" />
+
+    <Button
+        android:id="@+id/delete_group"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/rounded_button_secondary"
+        android:drawableLeft="@drawable/ic_delete"
+        android:text="@string/delete_group"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintTop_toBottomOf="@id/leave_group" />
+
+    <Button
+        android:id="@+id/offline_mode"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/rounded_button_secondary"
+        android:drawableLeft="@drawable/ic_offline"
+        android:text="@string/offline_mode"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+        app:layout_constraintTop_toBottomOf="@id/delete_group" />
+
+</android.support.constraint.ConstraintLayout>

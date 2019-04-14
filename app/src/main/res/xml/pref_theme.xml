@@ -1,0 +1,11 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="sound_theme"
+        android:title="@string/pref_title_sound_theme">
+        <intent
+            android:targetPackage="com.deckerth.thomas.eggservice"
+            android:targetClass="com.deckerth.thomas.eggservice.views.ThemeChooserActivity"/>
+    </Preference>
+
+</PreferenceScreen>

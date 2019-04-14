@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+        <variable
+            name="noOfSoftEggs"
+            type="Integer" />
+        <variable
+            name="noOfHardEggs"
+            type="Integer" />
+        <variable
+            name="noOfMediumEggs"
+            type="Integer" />
+        <variable
+            name="timerIsRunning"
+            type="boolean" />
+        <variable
+            name="progressCurrent"
+            type="Integer"/>
+        <variable
+            name="progressMax"
+            type="Integer"/>
+        <variable
+            name="messageText"
+            type="String"/>
+        <variable
+            name="softInProgress"
+            type="boolean"/>
+        <variable
+            name="mediumInProgress"
+            type="boolean"/>
+        <variable
+            name="hardInProgress"
+            type="boolean"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/splitter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/orders_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@id/splitter"
+            app:layout_constraintVertical_chainStyle="spread">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/orders_guideline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8" />
+
+            <TextView
+                android:id="@+id/orders_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_orders"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/soft_eggs_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_soft_eggs"
+                app:inProgress="@{softInProgress}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/orders_guideline"
+                app:layout_constraintTop_toBottomOf="@id/orders_title" />
+
+            <TextView
+                android:id="@+id/soft_eggs_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{noOfSoftEggs.toString()}"
+                app:inProgress="@{softInProgress}"
+                app:layout_constraintLeft_toLeftOf="@id/orders_guideline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/soft_eggs_label" />
+
+            <TextView
+                android:id="@+id/medium_eggs_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_medium_eggs"
+                app:inProgress="@{mediumInProgress}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/orders_guideline"
+                app:layout_constraintTop_toBottomOf="@id/soft_eggs_label" />
+
+            <TextView
+                android:id="@+id/medium_eggs_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{noOfMediumEggs.toString}"
+                app:inProgress="@{mediumInProgress}"
+                app:layout_constraintLeft_toLeftOf="@id/orders_guideline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/medium_eggs_label" />
+
+            <TextView
+                android:id="@+id/hard_eggs_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/label_hard_eggs"
+                app:inProgress="@{hardInProgress}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/orders_guideline"
+                app:layout_constraintTop_toBottomOf="@id/medium_eggs_label" />
+
+            <TextView
+                android:id="@+id/hard_eggs_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{noOfHardEggs.toString}"
+                android:paddingBottom="20dp"
+                app:inProgress="@{hardInProgress}"
+                app:layout_constraintLeft_toLeftOf="@id/orders_guideline"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/hard_eggs_label"
+                app:layout_constraintBottom_toTopOf="@id/start_button"/>
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:startStop="@{timerIsRunning}"
+                android:textSize="14sp"
+                android:background="@drawable/rounded_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hard_eggs_label" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/timer_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/splitter"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside">
+
+            <android.support.constraint.Guideline
+                android:id="@+id/vertical_guideline"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <com.deckerth.thomas.eggservice.controls.ChronometerWithPause
+                android:id="@+id/chronometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:background="@drawable/timer_background"
+                android:textColor="@color/colorPrimary"
+                android:padding="10dp"
+                app:customFont="digital_mono"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/message"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/vertical_guideline"
+                />
+
+            <com.deckerth.thomas.eggservice.controls.Hourglass
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:progress="@{safeUnbox(progressCurrent)}"
+                android:max="@{safeUnbox(progressMax)}"
+                app:layout_constraintBottom_toTopOf="@id/message"
+                app:layout_constraintLeft_toRightOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{messageText}"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+                app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@id/chronometer" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout></layout>
+

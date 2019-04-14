@@ -1,0 +1,29 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <EditTextPreference
+        android:key="timing_soft"
+        android:inputType="number"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:defaultValue="6"
+        android:title="@string/pref_title_timing_soft" />
+
+    <EditTextPreference
+        android:key="timing_medium"
+        android:inputType="number"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:defaultValue="7"
+        android:title="@string/pref_title_timing_medium" />
+
+    <EditTextPreference
+        android:key="timing_hard"
+        android:inputType="number"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:defaultValue="12"
+        android:title="@string/pref_title_timing_hard" />
+
+</PreferenceScreen>

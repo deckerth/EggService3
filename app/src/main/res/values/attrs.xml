@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Hourglass">
+        <attr name="max" format="float" />
+        <attr name="progress" format="float" />
+    </declare-styleable>
+    <declare-styleable name="ChronometerWithPause">
+        <attr name="customFont" format="string"/>
+    </declare-styleable>
+</resources>

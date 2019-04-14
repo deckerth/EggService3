@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "511526597088",
+    "firebase_url": "https://eggservice-storage.firebaseio.com",
+    "project_id": "eggservice-storage",
+    "storage_bucket": "eggservice-storage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511526597088:android:39f79531515c5ac9",
+        "android_client_info": {
+          "package_name": "com.deckerth.thomas.eggservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511526597088-8qsemsrbgf7g2j37n499de1ub95aobvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deckerth.thomas.eggservice",
+            "certificate_hash": "f06abc8c7fb8ba318e5319793e62f7c82f0034e8"
+          }
+        },
+        {
+          "client_id": "511526597088-9s005mvd8m9fk8e6c4k51fjie3l7roei.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deckerth.thomas.eggservice",
+            "certificate_hash": "954242adbcac3572a6dc712613d6a38b0cfcfc65"
+          }
+        },
+        {
+          "client_id": "511526597088-m17v953uta95cutrgpp4ei5gch7t7tns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIIkvIVpdXDfFUZgUUBt8BhZ7KyjXR7HQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511526597088-m17v953uta95cutrgpp4ei5gch7t7tns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="picked_theme"
+            type="com.deckerth.thomas.eggservice.ringtones.SoundTheme" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.ThemeChooserActivity">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/horizontal_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/vertical_guideline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/themes_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:contentDescription=""
+            android:paddingTop="10dp"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/horizontal_guideline"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="20dp"
+            app:backgroundTint="@color/colorFab"
+            app:srcCompat="@android:drawable/ic_input_add"
+            app:layout_constraintTop_toTopOf="@id/horizontal_guideline"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/grey_300"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/themes_list" />
+
+        <TextView
+            android:id="@+id/selected_theme_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="10dp"
+            android:text="@{picked_theme.getName}"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/themes_list" />
+
+        <Spinner
+            android:id="@+id/gusto_chooser"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selected_theme_name"
+            />
+
+        <ImageButton
+            android:id="@+id/play_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_play"
+            app:layout_constraintLeft_toRightOf="@id/gusto_chooser"
+            app:layout_constraintTop_toBottomOf="@id/selected_theme_name" />
+
+        <ImageButton
+            android:id="@+id/stop_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_stop"
+            android:visibility="gone"
+            app:layout_constraintLeft_toRightOf="@id/gusto_chooser"
+            app:layout_constraintTop_toBottomOf="@id/selected_theme_name" />
+
+        <Button
+            android:id="@+id/set_sound_theme"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_theme"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_button"
+            android:enabled="false"
+            app:layout_constraintTop_toBottomOf="@id/gusto_chooser"
+            app:layout_constraintLeft_toLeftOf="@id/vertical_guideline"
+            app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
+            />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

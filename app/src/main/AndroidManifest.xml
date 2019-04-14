@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.deckerth.thomas.eggservice">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.deckerth.thomas.eggservice.BasicApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_eggservice_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_eggservice_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!-- ========= Sign in ============ -->
+        <!-- ============================== -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.StartActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.LoginActivity"
+            android:label="@string/pref_title_firebase_connection"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+            </intent-filter>
+        </activity> <!-- ========= Sign in with Google============ -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.GoogleSignInActivity"
+            android:label="@string/pref_title_firebase_connection"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.StartActivity" />
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.GoogleAccountActivity"
+            android:label="@string/pref_title_firebase_connection"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+            </intent-filter>
+        </activity> <!-- ========= Sign in with Email============ -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.EmailPasswordSignInActivity"
+            android:label="@string/pref_title_firebase_connection"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.StartActivity" />
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.EmailPasswordAccountActivity"
+            android:label="@string/pref_title_firebase_connection"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
+            </intent-filter>
+        </activity> <!-- ========= Groups ============ -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.GroupActivity"
+            android:label="@string/pref_title_group_setup"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.StartActivity" />
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.GroupManagementActivity"
+            android:label="@string/pref_title_group_setup"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity" /> <!-- ========= Main ============ -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+        </activity> <!-- ========= Settings ============ -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.SettingsActivity"
+            android:label="@string/title_settings" />
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.ThemeChooserActivity"
+            android:label="@string/pref_title_sound_theme"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity" />
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.EditThemeActivity"
+            android:label="@string/pref_title_sound_theme"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.ThemeChooserActivity" />
+
+        <!-- ========= About ============ -->
+        <activity
+            android:name="com.deckerth.thomas.eggservice.views.InfoActivity"
+            android:parentActivityName="com.deckerth.thomas.eggservice.views.MainActivity" />
+    </application>
+
+</manifest>

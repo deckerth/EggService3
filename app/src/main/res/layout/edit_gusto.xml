@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RadioGroup
+        android:id="@+id/all_gustos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="46dp"
+        tools:layout_editor_absoluteY="64dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+        <RadioButton
+            android:id="@+id/choice_soft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gusto_soft"/>
+        <RadioButton
+            android:id="@+id/choice_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gusto_medium"/>
+        <RadioButton
+            android:id="@+id/choice_hard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gusto_hard"/>
+        <RadioButton
+            android:id="@+id/choice_fried"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gusto_fried_egg"/>
+        <RadioButton
+            android:id="@+id/choice_scrambled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gusto_scrambled_egg"/>
+        <RadioButton
+            android:id="@+id/choice_no_egg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gusto_no_egg"/>
+    </RadioGroup>
+</android.support.constraint.ConstraintLayout>
