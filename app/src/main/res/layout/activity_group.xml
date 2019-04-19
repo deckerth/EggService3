@@ -43,24 +43,12 @@
         android:text=""
         app:layout_constraintLeft_toRightOf="@id/info_icon"
         app:layout_constraintTop_toBottomOf="@id/info_text" />
-
-    <TextView
-        android:id="@+id/group_name"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingEnd="40dp"
-        android:paddingBottom="20dp"
-        android:text=""
-        app:layout_constraintLeft_toRightOf="@id/info_icon"
-        app:layout_constraintTop_toBottomOf="@id/status_text" />
-
+    s
     <View
         android:id="@+id/divider"
         style="@style/Divider.Horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/group_name" />
+        app:layout_constraintTop_toBottomOf="@id/status_text" />
 
     <Button
         android:id="@+id/create_group"

@@ -79,10 +79,10 @@
     <string name="hint_password">Passwort</string>
     <string name="emailpassword_status_fmt">Benutzer: %1$s (überprüft: %2$s)</string>
 
-    <string name="state_live">Sie sind Gruppeneigentümer.</string>
-    <string name="state_joined">Sie sind einer Gruppe beigetreten.</string>
+    <string name="state_live">Eigentümer der Gruppe: %s</string>
+    <string name="state_joined">Mitglied der Gruppe: %s</string>
     <string name="state_not_connected">Sie noch kein Mitglied einer Gruppe.</string>
-    <string name="state_request_pending">Sie haben angefragt einer Gruppe beizutreten.</string>
+    <string name="state_request_pending">Sie haben angefragt einer Gruppe beizutreten (%s).</string>
     <string name="current_group">"Gruppenname: %s"</string>
 
     <string name="create_group">Gruppe anlegen</string>

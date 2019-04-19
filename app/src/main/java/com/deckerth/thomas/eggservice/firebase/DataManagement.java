@@ -40,6 +40,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Set;
+
 public class DataManagement {
 
     public enum DatabaseState {LIVE, JOINED, NO_VALID_GROUP, REQUEST_PENDING, NOT_AUTHORIZED};
@@ -63,13 +65,13 @@ public class DataManagement {
     public String getStateText() {
         switch (mConnectivityState) {
             case JOINED:
-                return BasicApp.getContext().getString(R.string.state_joined);
+                return BasicApp.getContext().getString(R.string.state_joined, Settings.Current.getGroupName(BasicApp.getContext()));
             case LIVE:
-                return BasicApp.getContext().getString(R.string.state_live);
+                return BasicApp.getContext().getString(R.string.state_live, Settings.Current.getGroupName(BasicApp.getContext()));
             case NO_VALID_GROUP: case NOT_AUTHORIZED:
                 return BasicApp.getContext().getString(R.string.state_not_connected);
             case REQUEST_PENDING:
-                return BasicApp.getContext().getString(R.string.state_request_pending);
+                return BasicApp.getContext().getString(R.string.state_request_pending,Settings.Current.getPendingGroupName(BasicApp.getContext()));
         }
         return "";
     }

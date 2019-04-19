@@ -31,7 +31,6 @@ public class GroupActivity extends BaseActivity {
     }
 
     private TextView mStatusText;
-    private TextView mGroupName;
     private Button mCreateGroup;
     private Button mJoinGroup;
     private Button mLeaveGroup;
@@ -48,7 +47,6 @@ public class GroupActivity extends BaseActivity {
         mSticky = (action != null) &&  action.contentEquals("android.intent.action.APPLICATION_PREFERENCES");
 
         mStatusText = findViewById(R.id.status_text);
-        mGroupName = findViewById(R.id.group_name);
 
         mCreateGroup = findViewById(R.id.create_group);
         mCreateGroup.setOnClickListener(v -> {
@@ -180,12 +178,6 @@ public class GroupActivity extends BaseActivity {
 
     private void updateUI() {
         mStatusText.setText(DataManagement.getInstance().getStateText());
-        String groupName = DataManagement.getEmailFromPath(DataManagement.getInstance().getGroupName());
-        if (!groupName.isEmpty()) {
-            mGroupName.setText(getString(R.string.current_group,groupName));
-        } else {
-            mGroupName.setText("");
-        }
         switch (DataManagement.getInstance().getConnectivityState()) {
             case JOINED:
                 mCreateGroup.setVisibility(View.GONE);
