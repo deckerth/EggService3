@@ -44,7 +44,7 @@
     <string name="label_hard_eggs">Hard-boiled eggs: </string>
 
     <string name="pref_header_account">Firebase account</string>
-    <string name="pref_header_timing">Cooking times (min)</string>
+    <string name="pref_header_timing">Boiling times (min)</string>
     <string name="pref_title_firebase_connection">Firebase connection</string>
     <string name="pref_title_timing_soft">Soft-boiled eggs</string>
     <string name="pref_title_timing_medium">Medium-boiled eggs</string>
@@ -61,7 +61,7 @@
 
     <string name="title_activity_main">Egg Service</string>
     <string name="title_home">Members</string>
-    <string name="title_cook_eggs">Cook eggs</string>
+    <string name="title_cook_eggs">Boil eggs</string>
 
     <string name="desc_firebase_lockup">Firebase Logo</string>
     <string name="google_title_text">Google sign in</string>
