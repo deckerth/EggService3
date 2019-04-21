@@ -128,15 +128,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         setupActionBar();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to previous activity (if there is any)
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     /**
      * Set up the {@link android.app.ActionBar}, if the API is available.
      */
@@ -230,7 +221,6 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
             if (key == FIREBASE_CONNECTION) bindPreferenceSummaryToValue(groups); // also update the group setup
         }
 
-
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
             int id = item.getItemId();
@@ -294,11 +284,11 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
-            /*int id = item.getItemId();
+            int id = item.getItemId();
             if (id == android.R.id.home) {
                 startActivity(new Intent(getActivity(), SettingsActivity.class));
                 return true;
-            }*/
+            }
             return super.onOptionsItemSelected(item);
         }
     }

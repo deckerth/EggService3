@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +43,8 @@ public class GroupActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
+
+        setupActionBar();
 
         String action = getIntent().getAction();
         mSticky = (action != null) &&  action.contentEquals("android.intent.action.APPLICATION_PREFERENCES");
@@ -114,12 +117,24 @@ public class GroupActivity extends BaseActivity {
         });
 
         checkConnectivity();
+        updateUI();
+    }
+
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
+            finish(); // close this activity and return to previous activity (if there is any)
         }
 
         return super.onOptionsItemSelected(item);
@@ -158,15 +173,6 @@ public class GroupActivity extends BaseActivity {
         OwnRequestsObserver.getInstance().setOnAccessRequestAcceptedListener(null);
         OwnRequestsObserver.getInstance().setOnAccessRequestRejectedListener(null);
     }
-
-    private void checkConnectivity() {
-        super.showProgressDialog();
-        try {
-            new CheckConnectivityTask(BasicApp.getContext(),mCheckConnectivityCallback).execute("");
-        } catch (Exception e) {  }
-        super.hideProgressDialog();
-    }
-
 
     private void sendRequest(String email) {
         super.showProgressDialog();

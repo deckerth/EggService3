@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.deckerth.thomas.eggservice.BasicApp;
 import com.deckerth.thomas.eggservice.R;
+import com.deckerth.thomas.eggservice.firebase.CheckConnectivityTask;
+import com.deckerth.thomas.eggservice.firebase.DataManagementTask;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -28,6 +31,18 @@ public class BaseActivity extends AppCompatActivity {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.dismiss();
         }
+    }
+
+    protected void checkConnectivity() {
+        checkConnectivity(null);
+    }
+
+    protected void checkConnectivity(DataManagementTask.Callback callback) {
+        showProgressDialog();
+        try {
+            new CheckConnectivityTask(BasicApp.getContext(),callback).execute("");
+        } catch (Exception e) {  }
+        hideProgressDialog();
     }
 
     public void hideKeyboard(View view) {

@@ -27,12 +27,14 @@ public abstract class DataManagementTask extends AsyncTask<String, Void, DataMan
     @Override
     protected void onPostExecute(DataManagementResult result) {
         super.onPostExecute(result);
-        if (mException != null) {
-            mCallback.onError(mException);
-        } else if (result == null) {
-            mCallback.onError(null);
-        } else {
-            mCallback.onRequestComplete(result);
+        if (mCallback != null ){
+            if (mException != null) {
+                mCallback.onError(mException);
+            } else if (result == null) {
+                mCallback.onError(null);
+            } else {
+                mCallback.onRequestComplete(result);
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,8 @@ public class GoogleSignInActivity extends BaseActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google);
+
+        setupActionBar();
 
         String action = getIntent().getAction();
         mAllowDisconnect = (action != null) &&  action.contentEquals("android.intent.action.APPLICATION_PREFERENCES");
@@ -111,6 +114,17 @@ public class GoogleSignInActivity extends BaseActivity implements
         }
     }
     // [END onactivityresult]
+
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -188,6 +202,7 @@ public class GoogleSignInActivity extends BaseActivity implements
         }
 
         if (user != null) {
+            checkConnectivity();
             mStatusTextView.setText(getString(R.string.google_status_fmt, user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
             Settings.Current.setSignInMethod(BasicApp.getContext(), Settings.SignInMethod.GOOGLE);

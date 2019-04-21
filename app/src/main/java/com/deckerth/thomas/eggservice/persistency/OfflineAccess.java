@@ -33,8 +33,8 @@ class OfflineAccess implements DataAccess {
     @Override
     public void loadMembers() {
         Set<String> members = mSharedPref.getStringSet(MEMBERS, null);
+        List<MemberEntity> list = new ArrayList<MemberEntity>();
         if (members != null) {
-            List<MemberEntity> list = new ArrayList<MemberEntity>();
             Iterator<String> iterator = members.iterator();
             while (iterator.hasNext()) {
                 String name = iterator.next();
@@ -42,8 +42,8 @@ class OfflineAccess implements DataAccess {
                 MemberEntity newMember = new MemberEntity(name, valueStr);
                 list.add(newMember);
             }
-            mRepo.mObservableMembers.setValue(list);
         }
+        mRepo.mObservableMembers.setValue(list);
     }
 
     @Override

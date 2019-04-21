@@ -37,11 +37,11 @@
         <activity
             android:name="com.deckerth.thomas.eggservice.views.GoogleSignInActivity"
             android:label="@string/pref_title_firebase_connection"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.StartActivity" />
+             />
         <activity
             android:name="com.deckerth.thomas.eggservice.views.GoogleAccountActivity"
             android:label="@string/pref_title_firebase_connection"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
             </intent-filter>
@@ -49,11 +49,11 @@
         <activity
             android:name="com.deckerth.thomas.eggservice.views.EmailPasswordSignInActivity"
             android:label="@string/pref_title_firebase_connection"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.StartActivity" />
+             />
         <activity
             android:name="com.deckerth.thomas.eggservice.views.EmailPasswordAccountActivity"
             android:label="@string/pref_title_firebase_connection"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.APPLICATION_PREFERENCES" />
             </intent-filter>
@@ -61,11 +61,11 @@
         <activity
             android:name="com.deckerth.thomas.eggservice.views.GroupActivity"
             android:label="@string/pref_title_group_setup"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.StartActivity" />
+             />
         <activity
             android:name="com.deckerth.thomas.eggservice.views.GroupManagementActivity"
             android:label="@string/pref_title_group_setup"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity" /> <!-- ========= Main ============ -->
+             /> <!-- ========= Main ============ -->
         <activity
             android:name="com.deckerth.thomas.eggservice.views.MainActivity"
             android:label="@string/app_name"
@@ -80,11 +80,11 @@
         <activity
             android:name="com.deckerth.thomas.eggservice.views.ThemeChooserActivity"
             android:label="@string/pref_title_sound_theme"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.SettingsActivity" />
+             />
         <activity
             android:name="com.deckerth.thomas.eggservice.views.EditThemeActivity"
             android:label="@string/pref_title_sound_theme"
-            android:parentActivityName="com.deckerth.thomas.eggservice.views.ThemeChooserActivity" />
+             />
 
         <!-- ========= About ============ -->
         <activity

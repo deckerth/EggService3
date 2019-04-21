@@ -4,8 +4,10 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,6 +52,8 @@ public class ThemeChooserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setupActionBar();
+
         Current = this;
         mController = ThemesController.getInstance();
 
@@ -89,6 +93,26 @@ public class ThemeChooserActivity extends AppCompatActivity {
         subscribeUi(mViewModel);
 
         mThemeAdapter.setThemeList(ThemeRepository.Current.mThemes);
+    }
+
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to previous activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void subscribeUi(ThemeListViewModel viewModel) {

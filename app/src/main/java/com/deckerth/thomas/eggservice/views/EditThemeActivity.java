@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -64,6 +66,8 @@ public class EditThemeActivity extends AppCompatActivity {
         String themeName = getIntent().getStringExtra(EXTRA_THEME_NAME);
         setContentView(R.layout.activity_edit_theme);
 
+        setupActionBar();
+
         mTheme = ThemeRepository.Current.getTheme(themeName);
 
         if (savedInstanceState != null) {
@@ -112,6 +116,27 @@ public class EditThemeActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         outState.putString(SELECTED_GUSTO, mSelectedGusto.toString());
     }
+
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to previous activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     private void stop() {
         switch (mCurrentlyPlaying) {

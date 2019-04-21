@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
@@ -46,6 +47,8 @@ public class EmailPasswordSignInActivity extends BaseActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_emailpassword);
+
+        setupActionBar();
 
         String action = getIntent().getAction();
         mAllowDisconnect = (action != null) &&  action.contentEquals("android.intent.action.APPLICATION_PREFERENCES");
@@ -223,6 +226,7 @@ public class EmailPasswordSignInActivity extends BaseActivity implements
         }
 
         if (user != null) {
+            checkConnectivity();
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(),
                     user.isEmailVerified() ? getString(R.string.yes) : getString(R.string.no)));
@@ -251,6 +255,17 @@ public class EmailPasswordSignInActivity extends BaseActivity implements
             findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
             findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
             findViewById(R.id.signedInButtons).setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Set up the {@link android.app.ActionBar}, if the API is available.
+     */
+    private void setupActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Show the Up button in the action bar.
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 
