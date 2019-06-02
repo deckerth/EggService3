@@ -30,7 +30,7 @@ import com.deckerth.thomas.eggservice.viewmodel.TimerViewModel;
 public class TimerFragment extends Fragment {
     public static final String TAG = "TimerFragment";
 
-    private TimerFragmentBinding mBinding;
+    private TimerFragmentBinding mBinding = null;
     private TimerViewModel mViewModel;
     private View mView;
 
@@ -45,25 +45,26 @@ public class TimerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.timer_fragment, container, false);
-        mView = mBinding.getRoot();
+        if (mBinding == null) {
+            mBinding = DataBindingUtil.inflate(inflater, R.layout.timer_fragment, container, false);
+            mView = mBinding.getRoot();
 
-        mHourglass = mView.findViewById(R.id.progress_bar);
+            mHourglass = mView.findViewById(R.id.progress_bar);
 
-        mStartButton = mView.findViewById(R.id.start_button);
-        mStartButton.setOnClickListener(mStartButtonListener);
+            mStartButton = mView.findViewById(R.id.start_button);
+            mStartButton.setOnClickListener(mStartButtonListener);
 
-        mMessage = mView.findViewById(R.id.message);
+            mMessage = mView.findViewById(R.id.message);
 
-        mChronometer = mView.findViewById(R.id.chronometer);
-        mChronometer.setOnChronometerTickListener(mOnChronometerTickListener);
-        mChronometer.restoreInstanceState(savedInstanceState);
+            mChronometer = mView.findViewById(R.id.chronometer);
+            mChronometer.setOnChronometerTickListener(mOnChronometerTickListener);
+            mChronometer.restoreInstanceState(savedInstanceState);
 
-        mTheme = Settings.Current.getSoundTheme(BasicApp.getContext());
-        if (mTheme.isRandomTheme()) {
-            mTheme = ThemeRepository.Current.getRandomTheme();
+            mTheme = Settings.Current.getSoundTheme(BasicApp.getContext());
+            if (mTheme.isRandomTheme()) {
+                mTheme = ThemeRepository.Current.getRandomTheme();
+            }
         }
-
         return mView;
     }
 
@@ -109,7 +110,7 @@ public class TimerFragment extends Fragment {
         });
         if (viewModel.getTimerRunning().getValue()) {
             mChronometer.setBase(TimerController.getInstance().getTimerBase());
-            mChronometer.start();
+            mChronometer.resume();
         }
         viewModel.getTimeElapsedForGusto().observe(this, elapsed -> {
             if (elapsed != null) {
@@ -158,7 +159,6 @@ public class TimerFragment extends Fragment {
             TimerController.getInstance().timerStartStopClicked();
             if (TimerController.getInstance().getTimerRunning().getValue()) {
                 mHourglass.animate().rotation(360F).setDuration(1000).start();
-                mChronometer.setBase(SystemClock.elapsedRealtime());
                 mChronometer.start();
             } else {
                 mChronometer.stop();

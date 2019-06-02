@@ -43,7 +43,8 @@ public class ChronometerWithPause extends Chronometer {
         return "KEY_TIMER_RUNNING" + getId();
     }
 
-    public ChronometerWithPause(Context context) {
+    public ChronometerWithPause(Context context)
+    {
         super(context);
     }
 
@@ -63,7 +64,12 @@ public class ChronometerWithPause extends Chronometer {
 
     @Override
     public void start() {
-        setBase(SystemClock.elapsedRealtime() - timeWhenStopped);
+        setBase(SystemClock.elapsedRealtime());
+        isRunning = true;
+        super.start();
+    }
+
+    public void resume() {
         isRunning = true;
         super.start();
     }

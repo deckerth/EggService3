@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private MemberListViewModel mViewModel;
     private ActivityMainBinding mBinding;
     private Boolean mIsIdle = Boolean.TRUE;
+    private TimerFragment timerFragment = null;
+    private MemberListFragment memberListFragment = null;
 
     public final static String EXTRA_PATH = "MainActivity_Path";
 
@@ -46,22 +48,24 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navigation_home:
                         if (mEggCookMode) {
                             mEggCookMode = Boolean.FALSE;
-                            MemberListFragment fragment = new MemberListFragment();
+                            if (memberListFragment == null) memberListFragment = new MemberListFragment();
 
                             getSupportFragmentManager().beginTransaction()
                                     .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-                                    .replace(R.id.fragment_container, fragment).commit();
+                                    .replace(R.id.fragment_container, memberListFragment).commit();
                         }
                         return true;
 
                     case R.id.navigation_cook_eggs:
                         if (!mEggCookMode) {
                             mEggCookMode = Boolean.TRUE;
-                            TimerFragment fragment = new TimerFragment();
+                            if (timerFragment == null) {
+                                timerFragment = new TimerFragment();
+                            }
 
                             getSupportFragmentManager().beginTransaction()
                                     .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
-                                    .replace(R.id.fragment_container, fragment).commit();
+                                    .replace(R.id.fragment_container, timerFragment).commit();
                         }
                         return true;
                 }
