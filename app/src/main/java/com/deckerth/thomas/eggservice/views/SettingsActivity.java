@@ -47,6 +47,7 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
     public static final String SOUND_THEME = "sound_theme";
     public static final String CUSTOM_THEMES = "custom_themes";
     public static final String THEMES_FOR_RANDOM_ALARM = "themes_for_rnd_alarm";
+    public static final String LAST_PLAYED_SOUND_THEME_INDEX = "last_played_sound_theme_index";
 
     /**
      * A preference value change listener that updates the preference's summary

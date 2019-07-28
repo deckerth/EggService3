@@ -59,11 +59,6 @@ public class TimerFragment extends Fragment {
             mChronometer = mView.findViewById(R.id.chronometer);
             mChronometer.setOnChronometerTickListener(mOnChronometerTickListener);
             mChronometer.restoreInstanceState(savedInstanceState);
-
-            mTheme = Settings.Current.getSoundTheme(BasicApp.getContext());
-            if (mTheme.isRandomTheme()) {
-                mTheme = ThemeRepository.Current.getRandomTheme();
-            }
         }
         return mView;
     }
@@ -158,6 +153,10 @@ public class TimerFragment extends Fragment {
         public void onClick(View v) {
             TimerController.getInstance().timerStartStopClicked();
             if (TimerController.getInstance().getTimerRunning().getValue()) {
+                mTheme = Settings.Current.getSoundTheme(BasicApp.getContext());
+                if (mTheme.isRandomTheme()) {
+                    mTheme = ThemeRepository.Current.getRandomTheme();
+                }
                 mHourglass.animate().rotation(360F).setDuration(1000).start();
                 mChronometer.start();
             } else {

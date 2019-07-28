@@ -90,6 +90,16 @@ public class Settings {
         }
     }
 
+    public Integer getLastUsedSoundThemeIndex(Context context) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+        return sharedPref.getInt(SettingsActivity.LAST_PLAYED_SOUND_THEME_INDEX, -1);
+    }
+
+    public void setLastUsedSoundThemeIndex(Context context, Integer value) {
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
+            sharedPref.edit().putInt(SettingsActivity.LAST_PLAYED_SOUND_THEME_INDEX, value).apply();
+    }
+
     public String getPendingGroupName(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         return sharedPref.getString(SettingsActivity.PENDING_GROUP_NAME, "");

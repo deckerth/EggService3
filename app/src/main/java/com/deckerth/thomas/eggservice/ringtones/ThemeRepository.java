@@ -115,8 +115,16 @@ public class ThemeRepository {
 
         if (enabledThemes.size() == 0) {
             return mThemes.get(0);
+        } else if (enabledThemes.size() == 1) {
+            return enabledThemes.get(0);
         } else {
-            return enabledThemes.get(mRandom.nextInt(enabledThemes.size() - 1));
+            int lastPlayed = Settings.Current.getLastUsedSoundThemeIndex(BasicApp.getContext());
+            int themeNo = mRandom.nextInt(enabledThemes.size());
+            while ( themeNo == lastPlayed) {
+                themeNo = mRandom.nextInt(enabledThemes.size());
+            }
+            Settings.Current.setLastUsedSoundThemeIndex(BasicApp.getContext(),themeNo);
+            return enabledThemes.get(themeNo);
         }
     }
 
