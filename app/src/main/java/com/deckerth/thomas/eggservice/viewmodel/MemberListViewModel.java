@@ -1,9 +1,9 @@
 package com.deckerth.thomas.eggservice.viewmodel;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
 import com.deckerth.thomas.eggservice.persistency.DataRepository;
 import com.deckerth.thomas.eggservice.model.MemberEntity;

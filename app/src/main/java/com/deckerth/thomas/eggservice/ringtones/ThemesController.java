@@ -1,7 +1,7 @@
 package com.deckerth.thomas.eggservice.ringtones;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.deckerth.thomas.eggservice.BasicApp;
 import com.deckerth.thomas.eggservice.settings.Settings;

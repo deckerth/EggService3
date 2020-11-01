@@ -1,7 +1,7 @@
 package com.deckerth.thomas.eggservice.adapters;
 
 import android.content.res.ColorStateList;
-import android.databinding.BindingAdapter;
+import androidx.databinding.BindingAdapter;
 import android.graphics.Typeface;
 import android.view.View;
 import android.widget.TextView;

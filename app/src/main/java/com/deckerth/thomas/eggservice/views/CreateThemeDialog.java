@@ -2,7 +2,7 @@ package com.deckerth.thomas.eggservice.views;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import androidx.appcompat.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -11,7 +11,7 @@ import com.deckerth.thomas.eggservice.R;
 import com.deckerth.thomas.eggservice.ringtones.SoundTheme;
 import com.deckerth.thomas.eggservice.ringtones.ThemeRepository;
 
-public class CreateThemeDialog extends android.support.v4.app.DialogFragment {
+public class CreateThemeDialog extends androidx.fragment.app.DialogFragment {
 
     private Dialog mDialogInstance;
     private boolean mCancelled = false;

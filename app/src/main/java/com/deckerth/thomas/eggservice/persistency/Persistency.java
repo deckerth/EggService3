@@ -1,6 +1,6 @@
 package com.deckerth.thomas.eggservice.persistency;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 import com.deckerth.thomas.eggservice.model.MemberEntity;
 

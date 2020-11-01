@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import androidx.appcompat.app.ActionBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.deckerth.thomas.eggservice.BasicApp;
 import com.deckerth.thomas.eggservice.R;
-import com.deckerth.thomas.eggservice.firebase.CheckConnectivityTask;
 import com.deckerth.thomas.eggservice.firebase.DataManagement;
 import com.deckerth.thomas.eggservice.firebase.DataManagementResult;
 import com.deckerth.thomas.eggservice.firebase.DataManagementTask;

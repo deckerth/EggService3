@@ -1,7 +1,7 @@
 package com.deckerth.thomas.eggservice.persistency;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.deckerth.thomas.eggservice.firebase.DataManagement;
 import com.deckerth.thomas.eggservice.model.Member;

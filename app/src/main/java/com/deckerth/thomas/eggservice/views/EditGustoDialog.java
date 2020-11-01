@@ -13,7 +13,7 @@ import com.deckerth.thomas.eggservice.R;
 import com.deckerth.thomas.eggservice.model.Member;
 import com.deckerth.thomas.eggservice.model.MemberEntity;
 
-public class EditGustoDialog extends android.support.v4.app.DialogFragment {
+public class EditGustoDialog extends androidx.fragment.app.DialogFragment {
 
     private Dialog mDialogInstance;
 

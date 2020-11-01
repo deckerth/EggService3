@@ -36,18 +36,18 @@
             type="boolean"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/splitter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.4" />
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/orders_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
             app:layout_constraintRight_toRightOf="@id/splitter"
             app:layout_constraintVertical_chainStyle="spread">
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/orders_guideline"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -148,9 +148,9 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hard_eggs_label" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/timer_container"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -160,7 +160,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintVertical_chainStyle="spread_inside">
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/vertical_guideline"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -205,7 +205,7 @@
                 app:layout_constraintRight_toLeftOf="@id/vertical_guideline"
                 app:layout_constraintTop_toBottomOf="@id/chronometer" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.constraint.ConstraintLayout></layout>
+    </androidx.constraintlayout.widget.ConstraintLayout></layout>
 

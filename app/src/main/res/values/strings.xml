@@ -99,7 +99,7 @@
     <string name="title_join_group_request">Request</string>
     <string name="join_group_request">Do you want to allow the following user to edit the egg orders?</string>
     <string name="request_accepted">You have been accepted for the group.</string>
-    <string name="request_rejected">The joijn request has been rejected.</string>
+    <string name="request_rejected">The join request has been rejected.</string>
     <string name="title_delete_group">Delete group</string>
     <string name="delete_group_question">Do you want to delete the group with all entered data?</string>
 

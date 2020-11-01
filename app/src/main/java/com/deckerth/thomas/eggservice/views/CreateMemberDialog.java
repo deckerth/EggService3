@@ -13,7 +13,7 @@ import com.deckerth.thomas.eggservice.persistency.DataRepository;
 import com.deckerth.thomas.eggservice.R;
 import com.deckerth.thomas.eggservice.model.MemberEntity;
 
-public class CreateMemberDialog extends android.support.v4.app.DialogFragment {
+public class CreateMemberDialog extends androidx.fragment.app.DialogFragment {
 
     private Dialog mDialogInstance;
 

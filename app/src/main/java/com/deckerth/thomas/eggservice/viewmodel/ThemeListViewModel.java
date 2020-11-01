@@ -1,9 +1,9 @@
 package com.deckerth.thomas.eggservice.viewmodel;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MediatorLiveData;
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MediatorLiveData;
 
 import com.deckerth.thomas.eggservice.ringtones.SoundTheme;
 import com.deckerth.thomas.eggservice.ringtones.ThemeRepository;
