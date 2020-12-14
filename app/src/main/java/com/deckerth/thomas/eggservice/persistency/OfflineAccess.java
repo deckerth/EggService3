@@ -1,6 +1,7 @@
 package com.deckerth.thomas.eggservice.persistency;
 
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.ArraySet;
 
@@ -31,7 +32,12 @@ class OfflineAccess implements DataAccess {
     }
 
     @Override
-    public void loadMembers() {
+    public AsyncTask.Status getLoadMembersTaskState() {
+        return AsyncTask.Status.FINISHED;
+    }
+
+    @Override
+    public void loadMembers(Boolean fromScratch) {
         Set<String> members = mSharedPref.getStringSet(MEMBERS, null);
         List<MemberEntity> list = new ArrayList<MemberEntity>();
         if (members != null) {
@@ -110,5 +116,15 @@ class OfflineAccess implements DataAccess {
             }
         }
         mRepo.mObservableMembers.setValue(list);
+    }
+
+    @Override
+    public void startFirebaseListeners() {
+
+    }
+
+    @Override
+    public void stopFirebaseListeners() {
+
     }
 }

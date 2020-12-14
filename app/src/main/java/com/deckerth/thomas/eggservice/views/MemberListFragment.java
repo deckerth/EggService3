@@ -48,6 +48,7 @@ public class MemberListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        MainActivity.Current.setMemberListFragment(this);
         mViewModel = ViewModelProviders.of(this).get(MemberListViewModel.class);
 
         subscribeUi(mViewModel);

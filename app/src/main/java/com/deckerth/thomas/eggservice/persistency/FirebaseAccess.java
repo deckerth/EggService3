@@ -1,5 +1,6 @@
 package com.deckerth.thomas.eggservice.persistency;
 
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -23,8 +24,10 @@ class FirebaseAccess implements DataAccess{
 
     public static final String TAG = "DataRepository";
 
+    private GetMemberDatabaseResult mMemberDatabaseInfo = null;
     private DatabaseReference mDatabase;
     private DataRepository mRepo;
+    private GetMemberDatabaseTask mGetMemberDatabaseTask = null;
 
     FirebaseAccess(DataRepository repo) {
         mRepo = repo;
@@ -40,12 +43,12 @@ class FirebaseAccess implements DataAccess{
         public void onGetComplete(GetMemberDatabaseResult result) {
             switch (result.getState()) {
                 case JOINED:
-                    mDatabase = result.getMemberDatabase();
-                    mDatabase.addChildEventListener(mChildEventListener);
+                    mMemberDatabaseInfo = result;
+                    startFirebaseListeners();
                     break;
                 case LIVE:
-                    mDatabase = result.getMemberDatabase();
-                    mDatabase.addChildEventListener(mChildEventListener);
+                    mMemberDatabaseInfo = result;
+                    startFirebaseListeners();
                     PendingRequestObserver.getInstance().observe();
                     break;
                 case NO_VALID_GROUP:
@@ -142,12 +145,20 @@ class FirebaseAccess implements DataAccess{
     };
 
     @Override
-    public void loadMembers() {
+    public void loadMembers(Boolean fromScratch) {
         try {
-            mRepo.mObservableMembers.setValue(null);
-            mRepo.computeGustoSummary();
-            new GetMemberDatabaseTask(BasicApp.getContext(),mGetMemberDatabaseCallback).execute();
+            mGetMemberDatabaseTask = new GetMemberDatabaseTask(BasicApp.getContext(),mGetMemberDatabaseCallback);
+            mGetMemberDatabaseTask.execute();
         } catch (Exception e) {  }
+    }
+
+    @Override
+    public AsyncTask.Status getLoadMembersTaskState() {
+        if (mGetMemberDatabaseTask == null) {
+            return AsyncTask.Status.FINISHED;
+        } else {
+            return mGetMemberDatabaseTask.getStatus();
+        }
     }
 
     @Override
@@ -164,5 +175,26 @@ class FirebaseAccess implements DataAccess{
     @Override
     public void deleteMember(Member member) {
         mDatabase.child(member.getName()).removeValue();
+    }
+
+    private boolean mListenersActive = false;
+
+    @Override
+    public void startFirebaseListeners() {
+        if ((mMemberDatabaseInfo != null) && (!mListenersActive)) {
+            mListenersActive = true;
+            mDatabase = mMemberDatabaseInfo.getMemberDatabase();
+            mDatabase.addChildEventListener(mChildEventListener);
+        }
+    }
+
+    @Override
+    public void stopFirebaseListeners() {
+        if (mListenersActive && (mMemberDatabaseInfo != null)) {
+            mDatabase = mMemberDatabaseInfo.getMemberDatabase();
+            mDatabase.removeEventListener(mChildEventListener);
+            mListenersActive = false;
+        }
+
     }
 }

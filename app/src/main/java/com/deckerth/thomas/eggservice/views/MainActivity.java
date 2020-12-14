@@ -1,13 +1,18 @@
 package com.deckerth.thomas.eggservice.views;
 
 import android.app.AlertDialog;
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+
+import com.deckerth.thomas.eggservice.viewmodel.TimerViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -36,10 +41,22 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String EXTRA_PATH = "MainActivity_Path";
 
+    private final String getModeKey() {
+        return "APP_MODE";
+    }
+
     public static Intent getIntent(Context context, String path) {
         Intent filesIntent = new Intent(context, MainActivity.class);
         filesIntent.putExtra(MainActivity.EXTRA_PATH, path);
         return filesIntent;
+    }
+
+    public void setTimerFragment(TimerFragment timerFragment) {
+        this.timerFragment = timerFragment;
+    }
+
+    public void setMemberListFragment(MemberListFragment memberListFragment) {
+        this.memberListFragment = memberListFragment;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -84,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            mEggCookMode = savedInstanceState.getBoolean(getModeKey());
+        }
         Current = this;
 
         //setContentView(R.layout.activity_main);
@@ -108,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.fragment_container, fragment, MemberListFragment.TAG).commit();
         }
         PendingRequestObserver.getInstance().setOnAccessRequestArrivedListener(mOnAccessRequestArrived);
-        DataRepository.getPersistency().loadMembers();
     }
 
     private void subscribeUi(MemberListViewModel viewModel) {
@@ -121,6 +140,16 @@ public class MainActivity extends AppCompatActivity {
                 mBinding.executePendingBindings();
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        DataRepository.getPersistency().stopFirebaseListeners();
+
+        mViewModel.getMembers().removeObservers(this);
+        mViewModel.getIsLoading().removeObservers(this);
     }
 
     @Override
@@ -163,7 +192,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        DataRepository.getPersistency().loadMembers();
+
+        mViewModel = ViewModelProviders.of(this).get(MemberListViewModel.class);
+        subscribeUi(mViewModel);
+
+        DataRepository.getPersistency().loadMembers(true);
     }
 
     PendingRequestObserver.OnAccessRequestArrived mOnAccessRequestArrived = requestingUserPath -> {
@@ -194,4 +227,11 @@ public class MainActivity extends AppCompatActivity {
             return Boolean.FALSE;
         }
     };
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(getModeKey(), mEggCookMode);
+    }
+
 }

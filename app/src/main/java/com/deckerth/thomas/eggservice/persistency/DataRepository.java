@@ -1,5 +1,7 @@
 package com.deckerth.thomas.eggservice.persistency;
 
+import android.os.AsyncTask;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -67,8 +69,17 @@ public class DataRepository implements Persistency {
     }
 
     @Override
-    public void loadMembers() {
-        mDataAccess.loadMembers();
+    public AsyncTask.Status getLoadMembersTaskState() {
+        return mDataAccess.getLoadMembersTaskState();
+    }
+
+    @Override
+    public void loadMembers(Boolean fromScratch) {
+        if (fromScratch) {
+            mObservableMembers.setValue(null);
+            computeGustoSummary();
+        }
+        mDataAccess.loadMembers(fromScratch);
         computeGustoSummary();
     }
 
@@ -100,6 +111,16 @@ public class DataRepository implements Persistency {
     public void deleteMember(Member member) {
         mDataAccess.deleteMember(member);
         computeGustoSummary();
+    }
+
+    @Override
+    public void startFirebaseListeners() {
+        mDataAccess.startFirebaseListeners();
+    }
+
+    @Override
+    public void stopFirebaseListeners() {
+        mDataAccess.stopFirebaseListeners();
     }
 
     @Override

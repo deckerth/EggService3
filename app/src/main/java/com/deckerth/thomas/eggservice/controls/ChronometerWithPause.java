@@ -15,7 +15,7 @@ public class ChronometerWithPause extends Chronometer {
             "http://schemas.android.com/apk/res-auto";
     private static final String sAttribute = "customFont";
 
-    private long timeWhenStopped = 0;
+    private long alarmTimeOffset = 0;
     private boolean isRunning = false;
 
     static enum CustomFont {
@@ -42,6 +42,9 @@ public class ChronometerWithPause extends Chronometer {
     private final String getIsRunningKey() {
         return "KEY_TIMER_RUNNING" + getId();
     }
+    private final String getAlarmTimeOffsetKey() {
+        return "KEY_ALARM_TIME_OFFSET" + getId();
+    }
 
     public ChronometerWithPause(Context context)
     {
@@ -62,9 +65,59 @@ public class ChronometerWithPause extends Chronometer {
         super(context, attrs, defStyle);
     }
 
+    public void start(int seconds) {
+        alarmTimeOffset = seconds * 1000;
+        setBase(SystemClock.elapsedRealtime() + alarmTimeOffset);
+        // current duration the timer is running: SystemClock.elapsedRealtime() - getBase() + alarmTimeOffset
+        //
+        // Example:
+        //
+        // After start(10):
+        //  T := SystemClock.elapsedRealtime()
+        //  getBase() = T + 10000;
+        //
+        // after x seconds:
+        //
+        //  Tx := SystemClock.elapsedRealtime()
+        //  Tx = T + x * 1000
+        //
+        //  Tx - getBase() = T + x*1000 - T - 100000 = x*1000 - 10000
+        //  => x*1000 = Tx - getBase() + 100000
+        setCountDown(true);
+        isRunning = true;
+        super.start();
+    }
+
+    @Override
+    public void setBase(long base) {
+        super.setBase(base);
+    }
+
+    @Override
+    public long getBase() {
+        return super.getBase();
+    }
+
     @Override
     public void start() {
+        alarmTimeOffset = 0;
         setBase(SystemClock.elapsedRealtime());
+        // current duration the timer is running: SystemClock.elapsedRealtime() - getBase()
+        // Example:
+        //
+        // After start():
+        //  T := SystemClock.elapsedRealtime()
+        //  getBase() = T;
+        //
+        // after x seconds:
+        //
+        //  Tx := SystemClock.elapsedRealtime()
+        //  Tx = T + x * 1000
+        //
+        //  Tx - getBase() = T + x*1000 - T = x*1000
+        //  => x*1000 = Tx - getBase()
+        //
+        setCountDown(false);
         isRunning = true;
         super.start();
     }
@@ -74,47 +127,33 @@ public class ChronometerWithPause extends Chronometer {
         super.start();
     }
 
+    public long getNormalizedBase() {
+        return getBase() - alarmTimeOffset;
+    }
+
     @Override
     public void stop() {
         isRunning = false;
-        timeWhenStopped = SystemClock.elapsedRealtime() - getBase();
         super.stop();
     }
 
-    public void reset() {
-        stop();
-        isRunning = false;
-        setBase(SystemClock.elapsedRealtime());
-        timeWhenStopped = 0;
-    }
-
-    public boolean isRunning() {
+    private boolean isRunning() {
         return isRunning;
     }
 
-    public long getCurrentTime() {
-        return timeWhenStopped;
-    }
-
-    public void setCurrentTime(long time) {
-        timeWhenStopped = time;
-        setBase(SystemClock.elapsedRealtime() - timeWhenStopped);
-    }
-
     public void saveInstanceState(Bundle outState) {
-        if (isRunning) {
-            timeWhenStopped = SystemClock.elapsedRealtime() - getBase();
-        }
-        outState.putLong(getTimeKey(), getCurrentTime());
+        outState.putLong(getTimeKey(), getBase());
+        outState.putLong(getAlarmTimeOffsetKey(), alarmTimeOffset);
         outState.putBoolean(getIsRunningKey(), isRunning());
     }
 
     public void restoreInstanceState(Bundle inState) {
         if (inState != null) {
             isRunning = inState.getBoolean(getIsRunningKey());
-            setCurrentTime(inState.getLong(getTimeKey()));
-            timeWhenStopped = SystemClock.elapsedRealtime() - getBase();
+            alarmTimeOffset = inState.getLong(getAlarmTimeOffsetKey());
             if (isRunning) {
+                setBase(inState.getLong(getTimeKey()));
+                setCountDown(true);
                 super.start();
             }
         }

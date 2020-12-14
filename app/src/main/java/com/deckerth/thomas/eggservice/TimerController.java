@@ -2,9 +2,12 @@ package com.deckerth.thomas.eggservice;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import android.os.Bundle;
 import android.os.SystemClock;
 import android.widget.Chronometer;
 
+import com.deckerth.thomas.eggservice.controls.ChronometerWithPause;
 import com.deckerth.thomas.eggservice.model.Member;
 import com.deckerth.thomas.eggservice.persistency.DataRepository;
 import com.deckerth.thomas.eggservice.settings.Settings;
@@ -36,7 +39,7 @@ public class TimerController {
     public long getTimerBaseForCurrentGusto() {
         return mTimerBaseForCurrentGusto;
     }
-    public void setmTimerBaseForCurrentGusto(long base) {
+    public void setTimerBaseForCurrentGusto(long base) {
         this.mTimerBaseForCurrentGusto = base;
     }
 
@@ -95,6 +98,10 @@ public class TimerController {
     private long mRemainingSeconds = 0;
     private long mLastStartBase = 0;
 
+    public long getLastStartBase() {
+        return mLastStartBase;
+    }
+
     public void timerStartStopClicked() {
         mSoftEggTiming = Settings.Current.getSoftTimingSeconds();
         mMediumEggTiming = Settings.Current.getMediumTimingSeconds();
@@ -109,6 +116,7 @@ public class TimerController {
         mHardEggsInProgress.setValue(Boolean.FALSE);
         mTimeElapsedForGusto.setValue(0);
         if (mTimerRunning.getValue()) {
+            mTimerBase = 0;
             checkRemainingSeconds(0);
         }
     }
@@ -127,8 +135,9 @@ public class TimerController {
         return Boolean.FALSE;
     }
 
-    public TimerEvent ChronometerTick(Chronometer chronometer) {
-        mTimerBase = chronometer.getBase();
+    public TimerEvent ChronometerTick(ChronometerWithPause chronometer) {
+        if (mTimerBase == 0)
+            mTimerBase = chronometer.getNormalizedBase();
         long now = SystemClock.elapsedRealtime();
         long elapsedSeconds = (now - mTimerBase) / 1000;
         long lastElapsed = (now - mLastStartBase) / 1000;

@@ -71,6 +71,7 @@ public class TimerFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        MainActivity.Current.setTimerFragment(this);
         mViewModel = ViewModelProviders.of(this).get(TimerViewModel.class);
         subscribeUi(mViewModel);
     }
@@ -103,7 +104,10 @@ public class TimerFragment extends Fragment {
             mBinding.executePendingBindings();
         });
         if (viewModel.getTimerRunning().getValue()) {
-            mChronometer.setBase(TimerController.getInstance().getTimerBase());
+            mTheme = Settings.Current.getSoundTheme(BasicApp.getContext());
+            if (mTheme.isRandomTheme()) {
+                mTheme = ThemeRepository.Current.getRandomTheme();
+            }
             mChronometer.resume();
         }
         viewModel.getTimeElapsedForGusto().observe(this, elapsed -> {
@@ -157,7 +161,7 @@ public class TimerFragment extends Fragment {
                     mTheme = ThemeRepository.Current.getRandomTheme();
                 }
                 mHourglass.animate().rotation(360F).setDuration(1000).start();
-                mChronometer.start();
+                mChronometer.start(TimerController.getInstance().getRemainingTimeForGusto().getValue());
             } else {
                 mChronometer.stop();
             }
@@ -185,6 +189,7 @@ public class TimerFragment extends Fragment {
         public void onChronometerTick(Chronometer chronometer) {
             switch (TimerController.getInstance().ChronometerTick(mChronometer)) {
                 case RING:
+                    mChronometer.start(TimerController.getInstance().getRemainingTimeForGusto().getValue());
                     start_alarm();
                     break;
                 case RING_AND_STOP:
